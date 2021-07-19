@@ -3,7 +3,7 @@ package model;
 
 import javax.faces.bean.ManagedBean;
 
-@ManagedBean(name = "Employee")
+
 public class Employee {
 
     private String name;

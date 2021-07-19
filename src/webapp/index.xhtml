@@ -10,12 +10,13 @@
     <title>JSF Title</title>
 </h:head>
 <f:view>
+    <h:outputScript library="js" target="head" name="index.js"></h:outputScript>
     <h:form>
         <p:panel header="Employee Setter">
 
             <div style="margin-top: 10px">
 
-            <p:outputLabel for="employeeName" value="Имя: "/>
+            <p:outputLabel for="employeeName" value="Имя111111: "/>
 
             <p:inputText id="employeeName" title="Binding with ManagedBean"
                          value="#{Employee.name}">
