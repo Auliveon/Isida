@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui" >
+<h:head>
+    <title>JSF Title</title>
+</h:head>
+<f:view>
+    <h:form>
+        <p:panel header="Employee Setter">
+
+            <div style="margin-top: 10px">
+
+            <p:outputLabel for="employeeName" value="Имя: "/>
+
+            <p:inputText id="employeeName" title="Binding with ManagedBean"
+                         value="#{Employee.name}">
+            </p:inputText>
+
+            </div>
+
+            <div style="margin-top: 10px">
+
+            <p:outputLabel for="employeeAge" value="Возраст: "/>
+
+            <p:inputNumber   id="employeeAge" title="Binding with ManagedBean"
+                         value="#{Employee.age}" >
+            </p:inputNumber>
+
+            </div>
+
+            <div style="margin-top: 10px">
+
+            <p:outputLabel for="employeePos" value="Должность: "/>
+
+            <p:inputText id="employeePos" title="Binding with ManagedBean"
+                           value="#{Employee.position}" >
+            </p:inputText>
+
+            </div>
+
+            <br/>
+
+            <p:commandButton style="margin-top: 10px" value="Save Employee" action="nextPage"/>
+
+        </p:panel>
+    </h:form>
+
+</f:view>
+</html>
