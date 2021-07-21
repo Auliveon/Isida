@@ -14,19 +14,8 @@
 
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>ui-darkness</param-value>
+        <param-value>overcast</param-value>
     </context-param>
 
-    <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
-    </welcome-file-list>
 
-    <servlet>
-        <servlet-name>Hello</servlet-name>
-        <servlet-class>controller.MainController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Hello</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
 </web-app>

@@ -1,8 +1,8 @@
-fetch("/hello")
-    .then(resp => resp.text())
-    .then(resp => {
-        let div = document.createElement('div');
-        div.innerHTML = resp;
-        let ans = div.querySelector('div');
-        console.log(ans);
-    });
+
+
+function addLink(event) {
+    event.preventDefault();
+    let inputLine = document.getElementById("form:inputTextId");
+    console.log(event.target);
+    inputLine.value = event.target.href;
+}

@@ -5,51 +5,75 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:p="http://primefaces.org/ui" >
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title>JSF Title</title>
+    <h:outputScript library="js" name="index.js"></h:outputScript>
+    <title>Link Catcher</title>
+
 </h:head>
 <f:view>
-    <h:outputScript library="js" target="head" name="index.js"></h:outputScript>
-    <h:form>
-        <p:panel header="Employee Setter">
-
-            <div style="margin-top: 10px">
-
-            <p:outputLabel for="employeeName" value="Имя111111: "/>
-
-            <p:inputText id="employeeName" title="Binding with ManagedBean"
-                         value="#{Employee.name}">
-            </p:inputText>
-
+    <h:form id="form">
+        <p:panel header="Анализируемая страница">
+            <div class="" style="margin-top: 10px">
+                <p:inputText class="inp" style="width: 100%" id="inputTextId" value="#{parse.query}"
+                             title="Binding with ManagedBean">
+                </p:inputText>
             </div>
-
-            <div style="margin-top: 10px">
-
-            <p:outputLabel for="employeeAge" value="Возраст: "/>
-
-            <p:inputNumber   id="employeeAge" title="Binding with ManagedBean"
-                         value="#{Employee.age}" >
-            </p:inputNumber>
-
-            </div>
-
-            <div style="margin-top: 10px">
-
-            <p:outputLabel for="employeePos" value="Должность: "/>
-
-            <p:inputText id="employeePos" title="Binding with ManagedBean"
-                           value="#{Employee.position}" >
-            </p:inputText>
-
-            </div>
-
-            <br/>
-
-            <p:commandButton style="margin-top: 10px" value="Save Employee" action="nextPage"/>
-
         </p:panel>
+        <div style="text-align:center">
+            <p:commandButton style="margin-top: 10px; width: 40vh; margin-bottom: 10px"
+                             value="Анализировать"
+                             action="#{parse.getParsedNodes()}" update="growlMessageId, tablePanel"/>
+            <p:growl id="growlMessageId" showDetail="true" widgetVar="growlMessageId"/>
+        </div>
     </h:form>
+
+    <p:outputPanel id="tablePanel">
+        <c:if test="#{not empty parse.linkList.size()}">
+
+            <p:panel header="Обнаруженные ссылки" id="outText">
+                <c:if test="#{parse.linkList.size() > 0}">
+                <p:dataTable style="overflow-y: scroll; min-height: 1vh; max-height: 69vh" var="o" rowIndexVar="index"
+                             value="#{parse.linkList}">
+
+                    <p:column>
+                        <f:facet name="header">Номер</f:facet>
+                        #{index+1}
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Имя</f:facet>
+                        #{o.linkName}
+                    </p:column>
+
+                    <p:column id="linkColumn">
+                        <f:facet name="header">Ссылка</f:facet>
+                        <h:form>
+                            <p:commandLink update="form:inputTextId" action="#{parse.setQuery(o.value)}" onclick="event.preventDefault()" href="#{o.value}" value="#{o.value}">
+                            </p:commandLink>
+                        </h:form>
+
+                    </p:column>
+
+                </p:dataTable>
+        </c:if>
+
+            </p:panel>
+            <div style="text-align:center">
+                <c:if test="#{parse.linkList.size() > 0}">
+                <h:form id="clearForm">
+                    <p:commandButton style="margin-top: 10px; width: 40vh; margin-bottom: 10px"
+                                     value="Очистить таблицу"
+                                     action="#{parse.clearLinkList()}" update="tablePanel"/>
+                </h:form>
+                </c:if>
+            </div>
+        </c:if>
+
+
+
+    </p:outputPanel>
+
 
 </f:view>
 </html>
