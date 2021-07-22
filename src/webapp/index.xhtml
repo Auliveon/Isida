@@ -28,8 +28,8 @@
         <div style="text-align:center">
             <p:commandButton style="margin-top: 10px; width: 20%; margin-bottom: 10px"
                              value="Анализировать"
-                             action="#{bean.analyze()}" onstart="PF('dialog1').show()"
-                             oncomplete="PF('dialog1').hide()" update="growlMessageId, tablePanel"/>
+                             action="#{bean.analyze()}" onstart="PF('loading').show()"
+                             oncomplete="PF('loading').hide()" update="growlMessageId, tablePanel"/>
 
             <p:growl id="growlMessageId" showDetail="true" widgetVar="growlMessageId"/>
         </div>
@@ -88,7 +88,7 @@
         </c:if>
 
         <p:dialog responsive="false" showEffect="puff" hideEffect="puff" closable="false" draggable="false"
-                  widgetVar="dialog1">
+                  widgetVar="loading" resizable="false">
             <p:focus>
                 <div class="ui-g">
                     <div class="ui-g-4">
