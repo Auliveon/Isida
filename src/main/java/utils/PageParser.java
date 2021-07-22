@@ -11,11 +11,10 @@ import java.util.ArrayList;
 
 public class PageParser {
 
-    public static ArrayList<Link> parsePage(String query) throws IOException {
+    public static ArrayList<Link> parsePage(String url) throws IOException {
 
         ArrayList<Link> links = new ArrayList<Link>();
-        String url = linkValidator(query);
-        Document doc = Jsoup.connect(url).get();
+        Document doc = Jsoup.connect(linkValidator(url)).get();
         Elements elements = doc.select("a");
 
         for (Element elem : elements) {
@@ -27,11 +26,12 @@ public class PageParser {
         return links;
     }
 
-    public static String linkValidator(String link) {
-        if(!link.startsWith("http://") && !link.startsWith("https://")) {
-            link = "http://" + link;
-            return link;
+    public static String linkValidator(String url) {
+        if(!url.startsWith("http://") && !url.startsWith("https://")) {
+            url = "http://" + url;
+            return url;
         }
-        return link;
+
+        return url;
     }
 }

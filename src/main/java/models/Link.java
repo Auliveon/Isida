@@ -2,28 +2,28 @@ package models;
 
 public class Link {
 
-    private String linkName;
+    private String name;
 
-    private String value;
+    private String href;
 
-    public Link(String linkName, String value) {
-        this.linkName = linkName;
-        this.value = value;
+    public Link(String name, String href) {
+        this.name = name;
+        this.href = href;
     }
 
-    public String getLinkName() {
-        return linkName;
+    public String getName() {
+        return name;
     }
 
-    public void setLinkName(String linkName) {
-        this.linkName = linkName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getValue() {
-        return value;
+    public String getHref() {
+        return href;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setHref(String href) {
+        this.href = href;
     }
 }

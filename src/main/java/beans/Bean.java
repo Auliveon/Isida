@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @ViewScoped
 public class Bean {
 
-    private String query;
+    private String url;
 
     private ArrayList<Link> linkList;
 
@@ -38,17 +38,17 @@ public class Bean {
     public void analyze() {
         try {
             Thread.sleep(3000); //delay imitation
-            setLinkList(PageParser.parsePage(query));
+            setLinkList(PageParser.parsePage(url));
         } catch (Exception e) {
             showErrorMessage();
         }
     }
 
-    public String getQuery() {
-        return query;
+    public String getUrl() {
+        return url;
     }
 
-    public void setQuery(String query) {
-        this.query = query;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
